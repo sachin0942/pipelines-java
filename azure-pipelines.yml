@@ -6,7 +6,7 @@
 trigger:
 - dependabot/maven/junit-junit-4.13.1
 
-pool: Pocs
+pool: Default
 
 steps:
 - task: Maven@3
