@@ -19,7 +19,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-    
+#Enable below task if code coverage required    
 #- task: PublishCodeCoverageResults@1
 #  inputs:
 #    codeCoverageTool: "JaCoCo"
