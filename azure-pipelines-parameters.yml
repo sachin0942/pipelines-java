@@ -16,7 +16,7 @@ parameters:
 
 trigger: none
      
-- stages:
+stages:
   - stage: Test1
     jobs:
     - job: build
