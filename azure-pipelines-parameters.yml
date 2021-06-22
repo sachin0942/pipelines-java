@@ -24,6 +24,9 @@ stages:
       pool: Default
       steps:
         - script: echo building $(Build.BuildNumber) with ${{ parameters.image }}
+        - ${{ each parameter in parameters.image }};
+          - script: echo ${{parameter.key}}
+          - script: echo ${{ parameter.Value }}
   
   - stage: Test2
     jobs:
