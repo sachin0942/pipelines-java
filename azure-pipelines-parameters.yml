@@ -25,4 +25,4 @@ stages:
       steps:
         - script: echo building $(Build.BuildNumber) with ${{ parameters.image }}
         - ${{ if eq(parameters.image, "Default") }}
-            - script: "echo "Running all the tests"
+          - script: "echo "Running all the tests"
