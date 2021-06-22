@@ -7,13 +7,14 @@ parameters:
 - name: image
   displayName: Pool Image
   type: string
-  default: default
+  default: Default
   values:
   - windows-latest
+  - ubantu-latest
+  - macOS-latest
+  - Default
 
 trigger: none
-
-pool: Default
 
 jobs:
 - job: build
