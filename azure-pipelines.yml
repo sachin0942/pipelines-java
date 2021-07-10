@@ -27,7 +27,13 @@ steps:
 #    summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
 #    reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
 #    failIfCoverageEmpty: true 
-
+- task: ManualValidation@0
+  timeoutInMinutes: 1440 # task times out in 1 day
+  inputs:
+    notifyUsers: |
+      sachin0942@gmail.com
+    instructions: 'Please validate the build configuration and resume'
+    onTimeout: 'resume'
 - task: CopyFiles@2
   inputs:
     Contents: '**/target/*.jar'
