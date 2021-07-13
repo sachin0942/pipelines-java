@@ -1,10 +1,10 @@
 # Maven
 # Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
+# Add steps that analyze code, save build artifacts, deploy and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger:
-- main
+trigger: 
+  - azure-pipelines
 
 pool: Default
 
@@ -19,3 +19,22 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+#Enable below task if code coverage required    
+#- task: PublishCodeCoverageResults@1
+#  inputs:
+#    codeCoverageTool: "JaCoCo"
+#    summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
+#    reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
+#    failIfCoverageEmpty: true 
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/target/*.jar'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'MyBuildOutputs'
+    
