@@ -1,0 +1,78 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+parameters:
+- name: image
+  displayName: Pool Image
+  type: string
+  default: Default
+  values:
+  - windows-latest
+  - ubantu-latest
+  - macOS-latest
+  - Default
+- name: myString
+  type: string
+  default: a string
+- name: myMultiString
+  type: string
+  default: default
+  values:
+  - default
+  - ubuntu
+- name: myNumber
+  type: number
+  default: 2
+  values:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+- name: myBoolean
+  type: boolean
+  default: true
+- name: myObject
+  type: object
+  default:
+    foo: FOO
+    bar: BAR
+    things:
+      - one
+      - two
+      - three
+    nested:
+      one: apple
+      two: pear
+      count: 3
+- name: myStep
+  type: step
+  default:
+    script: echo my step
+- name: mySteplist
+  type: stepList
+  default:
+    - script: echo step one
+    - script: echo step two
+
+trigger: none
+     
+stages:
+  - stage: Test1
+    jobs:
+    - job: build
+      displayName: build
+      pool: Default
+      steps:
+        - script: echo building $(Build.BuildNumber) with ${{ parameters.image }}
+          
+  
+  - stage: Test2
+    jobs:
+    - job: build
+      displayName: build
+      pool: Default
+      steps:
+        - script: echo building $(Build.BuildNumber) with ${{ parameters.image }}

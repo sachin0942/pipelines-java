@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/POCs-DevOps/K8-POC/_apis/build/status/sachin0942.pipelines-java?branchName=azure-pipelines)](https://dev.azure.com/POCs-DevOps/K8-POC/_build/latest?definitionId=3&branchName=azure-pipelines)
 
 # Contributing
 
